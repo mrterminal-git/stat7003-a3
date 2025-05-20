@@ -1,0 +1,158 @@
+\documentclass[12pt]{article}
+\input{preamble}
+
+\begin{document}
+\begin{center}
+
+{\Large  {\bf Mathematical Probability (STAT2003/STAT7003)}
+
+Assignment 3 - Semester 1, 2025.
+
+}
+\end{center}
+
+The due date/time is given on Blackboard. STAT7003 students have additional items,\\ marked with a ``{\bf (*STAT7003)}''. The assignment has 5 questions with multiple items per question. Note that STAT7003 students (master's) need to complete all items. In contrast, {\bf STAT2003 students will only be marked on items not marked as STAT7003}. The weighting of the items is indicated in each question.\\ 
+
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%
+% Q1
+%%%%%%%%%%%%%%%%%%%%
+\item Let $X_1 \sim \Nor(\mu_1, \sigma^2)$ and $X_2 \sim \Nor(\mu_2, \sigma^2)$ be independent random variables. Consider $Y_1 = X_1+X_2$ and $Y_2 = X_1-X_2$.   
+
+\begin{enumerate}
+\item Using moment generating function (MGF), show that $Y_1$ and $Y_2$ are independent. \\
+\emph{Note:} You may use the fact that the joint MGF of independent random variables is the product of the individual MGFs. 
+			\hfill [7 marks]
+%
+\item Find the joint probability density function (PDF) of $Y_1$ and $Y_2$. 
+			\hfill [3 marks]
+%
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%
+\vspace{5pt}
+% Q2
+%%%%%%%%%%%%%%%%%%%%
+\item 
+Two machines, A and B, participate in a performance test where each is timed to complete a specific task. The time it takes a machine to complete the task follows a geometric distribution with success probability $p$ per minute; that is, in each minute, there is a probability $p$ that the machine completes the task. Please use the parameterisation of the geometric distribution given in the course notes.  
+
+Let $A$ and $B$ denote the number of minutes taken by machines A and B, respectively, to complete the task. Consider
+\begin{itemize}
+\item $X=\min(A, B)$: the earliest time the task is completed by either machine,
+\item $Y = A-B$: the difference in completion times, and 
+\item $Z = \frac{A}{A+B}$: the proportion of total time taken by machine A.
+\end{itemize}
+ 
+\begin{enumerate}
+\item Find the joint probability mass function (PMF) of $X$ and $Y$. 
+			\hfill [8 marks]
+%
+\item Are $X$ and $Y$ independent? Justify your answer.  
+			\hfill [2 marks]
+%
+\item Determine the joint PMF of $A$ and $A+B$. 
+			\hfill [4 marks]
+%
+\item Find the PMF of $Z$.  
+			\hfill [6 marks]
+%
+\item{\bf (*STAT7003)} 
+Suppose the test is repeated independently $N$ times. Let $N_A$ be the number of times machine A completes the task before machine B. What is the distribution of $N_A$? What is the probability that machine A is faster than machine B in more than half of the $N$ trials?
+			\\\phantom{1}\hfill [10 marks]
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%
+\vspace{5pt}
+% Q3
+%%%%%%%%%%%%%%%%%%%%
+\item An engineer needs to simplify the processing of sensor data by rounding the recorded values to the nearest whole number. For example, both sensor readings of 9.53 and 10.47 will be rounded to 10. To model the rounding errors, the engineer assumes that the rounding errors are independent and follow a uniform distribution between -0.5 and 0.5. Let $X_1, X_2, \ldots, X_n$ represent the rounding errors for $n$ measurements.  
+
+\begin{enumerate}
+\item Find the expected value and variance of each rounding error $X_i$.
+			\hfill [2 marks]
+%
+\item Using Chebyshev's inequality, calculate an upper bound for the probability that the total rounding error exceeds 10\% of the number of measurements, that is, $\Pm\left(|\sum_{i=1}^n X_i| > 0.1 n\right)$. 
+			\\\phantom{1}\hfill [2 marks]
+%
+\item A researcher is interested in how the mean absolute error (MAE) $\frac{1}{n} \sum_{i=1}^n |X_i|$ behaves as the number of measurements $n$ becomes large. What can you conclude using the law of large numbers?
+			\hfill [4 marks]
+%
+\item For large $n$, find the distribution of the MAE using the central limit theorem. 
+			\hfill [2 marks]
+%
+\item 
+{\bf (*STAT7003)} Repeat (d) with MAE replaced by the mean square error (MSE) $\frac{1}{n} \sum_{i=1}^n X_i^2$. 
+			\\\phantom{1}\hfill [5 marks]
+%
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%
+\vspace{5pt}
+% Q4
+%%%%%%%%%%%%%%%%%%%%
+\item A sports equipment store sells limited edition tennis rackets. Due to the exclusive nature of the product and limited display space, the store can hold a maximum of four rackets at any one time. Rackets must be stored individually to avoid damage, and storing them elsewhere in the shop is not permitted.
+%
+Each day, the number of rackets sold (provided there is sufficient stock) follows the same distribution:
+\begin{itemize}
+	\item There is a 40\% chance that no rackets are sold.
+	\item There is a 40\% chance that one racket is sold.
+	\item There is a 20\% chance that two rackets are sold.
+	\end{itemize}
+%
+If the store has no rackets in stock at the end of the day, the manager places a restocking order for four new rackets, which are delivered before the store opens the following morning. Each delivery incurs a fixed cost of $C$.  
+%
+\begin{enumerate}
+\item Give the one-step transition matrix for the number of rackets in stock at the start of each day, given the stock level at the start of the previous day. Draw the corresponding transition graph. 
+			\\\phantom{1}\hfill [6 marks]
+%
+\item Find the limiting distribution for the number of rackets in stock when the shop opens, using your transition matrix in (a). 
+			\hfill [5 marks]
+%
+\item Determine the expected long-run average number of restocking orders placed per day. 
+			\\\phantom{1}\hfill [2 marks]
+%
+\item If a customer arrives and no rackets are in stock, the sale is lost. Calculate the expected number of lost sales per day in the long run. 
+			\hfill [2 marks]
+%
+\item Each successful sale generates a profit of $P$, and the delivery charge remains as $C$ regardless of the quantity ordered. Use {\sf Python} to simulate the sales and inventory of this store. Implement two restocking strategies: (i) restock when there are no rackets left, and (ii) restock if there are fewer than two rackets at the end of the day. 
+Start with an initial stock of four rackets. Set $P=10$ and $C=15$. Simulate $1000$ days and report the average number of restocking orders, the average number of sales lost, and the average profit from sales. Compare the two restocking strategies based on the simulation results.   
+			\hfill [15 marks]
+%
+\item {\bf (*STAT7003)} To determine the most profitable strategy, derive a condition (expressed in terms of $C$ and $P$) under which the manager should switch from strategy (i) to strategy (ii).   
+			\\\phantom{1}\hfill [5 marks] 
+%
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%
+\vspace{5pt}
+\newpage
+% Q5
+%%%%%%%%%%%%%%%%%%%%
+\item A smart irrigation system manages water delivery using the following components:
+\begin{itemize}
+\item two soil moisture sensors (Sensor A and Sensor B) monitors moisture levels. 
+\item a central decision unit processes sensor data and determines when irrigation is needed. 
+\item two electronic irrigation valves (Valve A and Valve B) which open if instructed. 
+\item a power controller provides energy to all components.
+\end{itemize}
+The system is considered operational if both the power controller and the central decision unit are working, \textbf{and} at least one sensor is working, \textbf{and} at least one valve is working. 
+%
+\begin{enumerate}
+\item Draw a block diagram that represents the system's components and their relationships. 
+			\\\phantom{1}\hfill [4 marks] 
+%
+\item Give the structure function for this system.
+			\hfill [2 marks] 
+%
+\item Assume all six components fail independently and have exponentially distributed lifetimes with mean $\lambda$ years. What is the probability that the system is working at some time $t>0$? 
+			\\\phantom{1}\hfill [4 marks] 
+%
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{enumerate}
+\end{document}
