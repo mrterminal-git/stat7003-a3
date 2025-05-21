@@ -26,9 +26,115 @@ The due date/time is given on Blackboard. STAT7003 students have additional item
 \emph{Note:} You may use the fact that the joint MGF of independent random variables is the product of the individual MGFs. 
 			\hfill [7 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The moment generating function (MGF) of a normal random variable $X \sim \Nor(\mu, \sigma^2)$ is given by:
+\[
+M_X(t) = \exp\left(\mu t + \frac{\sigma^2 t^2}{2}\right)
+\]
+Thus, the MGFs of $X_1$ and $X_2$ are:
+\[
+M_{X_1}(t) = \exp\left(\mu_1 t + \frac{\sigma^2 t^2}{2}\right)
+\]
+\[
+M_{X_2}(t) = \exp\left(\mu_2 t + \frac{\sigma^2 t^2}{2}\right)
+\]
+The joint MGF of $X_1$ and $X_2$ is given by:
+\[
+M_{X_1, X_2}(t_1, t_2) = M_{X_1}(t_1) \cdot M_{X_2}(t_2) = \exp\left(\mu_1 t_1 + \frac{\sigma^2 t_1^2}{2}\right) \cdot \exp\left(\mu_2 t_2 + \frac{\sigma^2 t_2^2}{2}\right)
+\]
+Now, we can express $Y_1$ and $Y_2$ in terms of $X_1$ and $X_2$:
+\[
+Y_1 = X_1 + X_2
+\]
+\[
+Y_2 = X_1 - X_2
+\]
+To find the joint MGF of $Y_1$ and $Y_2$, we need to express $X_1$ and $X_2$ in terms of $Y_1$ and $Y_2$. We can do this by solving the equations:
+\[
+X_1 = \frac{Y_1 + Y_2}{2}
+\]
+\[
+X_2 = \frac{Y_1 - Y_2}{2}
+\]
+Substituting these expressions into the joint MGF of $X_1$ and $X_2$, we get:
+\[
+M_{Y_1, Y_2}(t_1, t_2) = M_{X_1, X_2}\left(\frac{t_1 + t_2}{2}, \frac{t_1 - t_2}{2}\right)
+\]
+Substituting the MGFs of $X_1$ and $X_2$, we have:
+\[
+M_{Y_1, Y_2}(t_1, t_2) = \exp\left(\mu_1 \frac{t_1 + t_2}{2} + \frac{\sigma^2}{2}\left(\frac{t_1 + t_2}{2}\right)^2\right) \cdot \exp\left(\mu_2 \frac{t_1 - t_2}{2} + \frac{\sigma^2}{2}\left(\frac{t_1 - t_2}{2}\right)^2\right)
+\]
+Now, we can simplify this expression:
+\[
+M_{Y_1, Y_2}(t_1, t_2) = \exp\left(\frac{\mu_1 + \mu_2}{2} t_1 + \frac{\mu_1 - \mu_2}{2} t_2 + \frac{\sigma^2}{8}\left(t_1^2 + t_2^2 + 2t_1 t_2\right) + \frac{\sigma^2}{8}\left(t_1^2 - t_2^2 - 2t_1 t_2\right)\right)
+\]
+This simplifies to:
+\[
+\boxed {M_{Y_1, Y_2}(t_1, t_2) = \exp\left(\frac{\mu_1 + \mu_2}{2} t_1 + \frac{\mu_1 - \mu_2}{2} t_2 + \frac{\sigma^2}{4} t_1^2 + \frac{\sigma^2}{4} t_2^2\right)}
+\]
+This is the joint MGF of $Y_1$ and $Y_2$. This can also be expressed as the product of the individual MGFs:
+\[
+M_{Y_1, Y_2}(t_1, t_2) = \exp\left(\frac{\mu_1 + \mu_2}{2} t_1 + \frac{\sigma^2}{4} t_1^2 \right) \cdot \exp\left(\frac{\mu_1 - \mu_2}{2} t_2 + \frac{\sigma^2}{4} t_2^2\right)
+\]
+\[
+= M_{Y_1}(t_1) \cdot M_{Y_2}(t_2)
+\]
+
+Since the joint MGF can be expressed as a product of the individual MGFs, we conclude that $Y_1$ and $Y_2$ are independent random variables.
+
+
 \item Find the joint probability density function (PDF) of $Y_1$ and $Y_2$. 
 			\hfill [3 marks]
 %
+\\
+\textbf{Answer:}
+\\
+
+The joint PDF of $X_1$ and $X_2$ is given by the product of their individual PDFs:
+\begin{align*}
+f_{X_1, X_2}(x_1, x_2) &= f_{X_1}(x_1) \cdot f_{X_2}(x_2) \\
+&= \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x_1 - \mu_1)^2}{2\sigma^2}\right) \cdot \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x_2 - \mu_2)^2}{2\sigma^2}\right) \\
+&= \frac{1}{2\pi \sigma^2} \exp\left(-\frac{(x_1 - \mu_1)^2 + (x_2 - \mu_2)^2}{2\sigma^2}\right)
+\end{align*}
+
+The transformation from $(X_1, X_2)$ to $(Y_1, Y_2)$ is given by the equation:
+\begin{align*}
+f_{Y_1, Y_2}(y_1, y_2) &= f_{X_1, X_2}\left(x_1,x_2\right) \cdot \left|J\right| \\
+\end{align*}
+
+The Jacobian of the transformation is given by:
+\begin{align*}
+J &= \begin{vmatrix}
+\frac{\partial x_1}{\partial y_1} & \frac{\partial x_1}{\partial y_2} \\
+\frac{\partial x_2}{\partial y_1} & \frac{\partial x_2}{\partial y_2}
+\end{vmatrix} \\
+&= \begin{vmatrix}
+\frac{1}{2} & \frac{1}{2} \\
+\frac{1}{2} & -\frac{1}{2}
+\end{vmatrix} \\
+&= \left(\frac{1}{2}\right)\left(-\frac{1}{2}\right) - \left(\frac{1}{2}\right)\left(\frac{1}{2}\right) \\
+&= -\frac{1}{4} - \frac{1}{4} \\
+&= -\frac{1}{2}
+\end{align*}
+
+Thus, the absolute value of the Jacobian is $|J| = \frac{1}{2}$.
+Now, we can express the joint PDF of $Y_1$ and $Y_2$ as:
+
+\begin{align*}
+f_{Y_1, Y_2}(y_1, y_2) &= f_{X_1, X_2}\left(\frac{y_1 + y_2}{2}, \frac{y_1 - y_2}{2}\right) \cdot \left|J\right| \\
+&= \frac{1}{2\pi \sigma^2} \exp\left(-\frac{\left(\frac{y_1 + y_2}{2} - \mu_1\right)^2 + \left(\frac{y_1 - y_2}{2} - \mu_2\right)^2}{2\sigma^2}\right) \cdot \frac{1}{2} \\
+\end{align*}
+
+This simplifies to:
+\begin{align*}
+f_{Y_1, Y_2}(y_1, y_2) &= \frac{1}{4\pi \sigma^2} \exp\left(-\frac{\left(\frac{y_1 + y_2}{2} - \mu_1\right)^2 + \left(\frac{y_1 - y_2}{2} - \mu_2\right)^2}{2\sigma^2}\right) \\
+\end{align*}
+
+This is the joint PDF of $Y_1$ and $Y_2$, which is a bivariate normal distribution with means $\mu_1$ and $\mu_2$, and variance $\sigma^2$.
+%
+
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%
