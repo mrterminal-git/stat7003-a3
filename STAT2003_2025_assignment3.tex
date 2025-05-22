@@ -188,8 +188,8 @@ P(X=x, Y=y) &= P(A = x, B=x-y) \\
 Therefore, the joint PMF of $X$ and $Y$ is given by:
 \begin{align*}
 P(X=x, Y=y) &= \begin{cases}
-p^2(1-p)^{2x+y-2} & \text{if } a\geq b, y \geq 0 \\
-p^2(1-p)^{2x-y-2} & \text{if } a<b, y < 0
+p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
+p^2(1-p)^{2x-y-2} & \text{if } y < 0
 \end{cases}
 \end{align*}
 
@@ -228,15 +228,109 @@ P(X=x) &= p^2(1-p)^{2x-2} \left(\frac{1}{p} + \frac{1-p}{p}\right) \\
 &= p(1-p)^{2x-2} \left( 2-p \right) \\
 \end{align*}
 
+The marginal PMF of $Y$ can be found similarly by summing the join PMF over all possible values of $X$:
+
+\begin{align*}
+P(Y=y) &= \sum_{x=-\infty}^{\infty} P(X=x, Y=y) \\
+&= \begin{cases}
+\sum_{x=0}^{\infty} p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
+\sum_{x=0}^{\infty} p^2(1-p)^{2x-y-2} & \text{if } y < 0
+\end{cases}	\\
+&= \begin{cases}
+	p^2(1-p)^{y-2} \sum_{x=0}^{\infty} (1-p)^{2x} & \text{if } y \geq 0 \\
+	p^2(1-p)^{-y-2} \sum_{x=0}^{\infty} (1-p)^{2x} & \text{if } y < 0
+\end{cases} \\
+\end{align*}
+
+The sum term is a geometric series with the first term $1$ and common ratio $(1-p)^2$, which converges:
+
+\begin{align*}
+\sum_{x=0}^{\infty} (1-p)^{2x} &= \frac{1}{p(1-p)} \\
+\end{align*}
+
+Substituting this result back into the marginal PMF of $Y$, we have:
+\begin{align*}
+P(Y=y) &= \begin{cases}
+p(1-p)^{y-2} \left(\frac{1}{p(1-p)}\right) & \text{if } y \geq 0 \\
+p(1-p)^{-y-2} \left(\frac{1}{p(1-p)}\right) & \text{if } y < 0
+\end{cases} \\
+&= \begin{cases}
+(1-p)^{y-3} & \text{if } y \geq 0 \\
+(1-p)^{-y-3} & \text{if } y < 0
+\end{cases}
+\end{align*}
+
+Now, we can check if the joint PMF can be expressed as the product of the marginal PMFs:
+
+\begin{align*}
+P(X=x, Y=y) &= \begin{cases}
+(1-p)^{y-3}p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y \geq 0 \\
+(1-p)^{-y-3}p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y < 0
+\end{cases} \\
+\end{align*}
+
+By inspection, we can see that the joint PMF cannot be expressed as the product of the marginal PMFs. Therefore, $X$ and $Y$ are not independent.
+%
+
 \item Determine the joint PMF of $A$ and $A+B$. 
 			\hfill [4 marks]
 %
+\\
+\textbf{Answer:}
+\\
+Let $M = A + B$. The joint PMF of $A$ and $M$ can be found by the following:
+
+\begin{align*}
+P(A=a, M=m) &= P(A=a, A+B=m) \\
+&= P(A=a, B=m-a) \\
+&= P(A=a) \cdot P(B=m-a) \\
+&= (1-p)^{a-1}p \cdot (1-p)^{(m-a)-1}p \\
+&= p^2(1-p)^{m-2} \\
+\end{align*}
+%
+
 \item Find the PMF of $Z$.  
 			\hfill [6 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The PMF of $Z$ can be found by the following:
+\begin{align*}
+P(Z=z) &= P\left(\frac{A}{A+B} = z\right) \\
+&= P(A = z(A+B)) \\
+&= P(A = zM) \\
+&= P(A = zm, M=m) \\
+&= \boxed{p^2(1-p)^{m-2}} \\
+\end{align*}
+%
+
+
 \item{\bf (*STAT7003)} 
 Suppose the test is repeated independently $N$ times. Let $N_A$ be the number of times machine A completes the task before machine B. What is the distribution of $N_A$? What is the probability that machine A is faster than machine B in more than half of the $N$ trials?
 			\\\phantom{1}\hfill [10 marks]
+%
+\\
+\textbf{Answer:}
+\\
+The number of times machine A completes the task before machine B in $N$ trials is given by the expression:
+
+\begin{align*}
+N_A &= \sum_{i=1}^{N} I_i \\
+I_i &= \begin{cases}
+1 & \text{if machine A is faster than machine B in trial } i \\
+0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
+Therefore, $N_A$ is the sum of $N$ independent Bernoulli random variables, where each $I_i$ has a success probability of $p$.
+The distribution of $N_A$ is given by the binomial distribution with parameters $N$ and $p$:
+
+\begin{align*}
+N_A \sim \mathrm{Binomial}(N, p) \\
+\end{align*}
+
+
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%
@@ -249,6 +343,11 @@ Suppose the test is repeated independently $N$ times. Let $N_A$ be the number of
 \item Find the expected value and variance of each rounding error $X_i$.
 			\hfill [2 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The expected value of a uniform distribution $X \sim U(a, b)$ is given by:
+
 \item Using Chebyshev's inequality, calculate an upper bound for the probability that the total rounding error exceeds 10\% of the number of measurements, that is, $\Pm\left(|\sum_{i=1}^n X_i| > 0.1 n\right)$. 
 			\\\phantom{1}\hfill [2 marks]
 %
