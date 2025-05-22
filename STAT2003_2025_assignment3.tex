@@ -347,20 +347,148 @@ N_A \sim \mathrm{Binomial}(N, p) \\
 \textbf{Answer:}
 \\
 The expected value of a uniform distribution $X \sim U(a, b)$ is given by:
+\begin{align*}
+E[X] &= \frac{a + b}{2} \\
+&= \frac{-0.5 + 0.5}{2} \\
+&= 0 \\
+\end{align*}
+
+The variance of a uniform distribution $X \sim U(a, b)$ is given by:
+\begin{align*}
+Var[X] &= \frac{(b - a)^2}{12} \\
+&= \frac{(0.5 - (-0.5))^2}{12} \\
+&= \frac{(1)^2}{12} \\
+&= \frac{1}{12} \\
+\end{align*}
+%
 
 \item Using Chebyshev's inequality, calculate an upper bound for the probability that the total rounding error exceeds 10\% of the number of measurements, that is, $\Pm\left(|\sum_{i=1}^n X_i| > 0.1 n\right)$. 
 			\\\phantom{1}\hfill [2 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The Chebyshev's inequality is given by:
+\begin{align*}
+\Pm\left(|X - \mu| \geq k\sigma\right) &\leq \frac{1}{k^2}
+\end{align*}
+
+where $X$ is a random variable, $\mu$ is the mean of $X$, $\sigma$ is the standard deviation of $X$, and $k$ is a positive constant.
+
+We can apply Chebyshev's inequality to the sum of the rounding errors:
+
+\begin{align*}
+\Pm\left(\left|\sum_{i=1}^n X_i - E\left[\sum_{i=1}^n X_i\right]\right| > 0.1 n\right) \\
+\end{align*}
+
+Since each $X_i$ has an expected value of $0$, and using the linearity of expectation, we have:
+
+\begin{align*}
+\Pm\left(\left|\sum_{i=1}^n X_i - E\left[\sum_{i=1}^n X_i\right]\right| > 0.1 n\right) &= \Pm\left(\left|\sum_{i=1}^n X_i\right| > 0.1 n\right) \\
+\end{align*}
+
+If $k\sigma = 0.1 n$, then we can express $k$ as:
+\begin{align*}
+k &= \frac{0.1 n}{\sigma} \\
+&= \frac{0.1 n}{\sqrt{\frac{1}{12}}} \\
+&= 0.1 n \sqrt{12} \\
+\end{align*}
+
+Therefore, we can apply Chebyshev's inequality:
+\begin{align*}
+\Pm\left(\left|\sum_{i=1}^n X_i\right| > 0.1 n\right) &\leq \frac{1}{k^2} \\
+&= \frac{1}{(0.1 n \sqrt{12})^2} \\
+&= \frac{25}{3 n^2} \\
+\implies \Pm\left(\left|\sum_{i=1}^n X_i\right| > 0.1 n\right) &\leq \frac{25}{3 n^2} \\
+\end{align*}
+%
+
 \item A researcher is interested in how the mean absolute error (MAE) $\frac{1}{n} \sum_{i=1}^n |X_i|$ behaves as the number of measurements $n$ becomes large. What can you conclude using the law of large numbers?
 			\hfill [4 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The law of large numbers states that as the number of measurements $n$ increases, the sample mean converges to the expected value of the random variable. In this case, we have:
+\begin{align*}
+\frac{1}{n} \sum_{i=1}^n |X_i| &\xrightarrow{P} E[|X_i|] \\
+\end{align*}
+
+The expected value of the absolute value of a uniform distribution $X \sim U(a, b)$ is given by:
+\begin{align*}
+E[|X|] &= \frac{1}{b-a} \int_a^b |x| dx \\
+&= \frac{1}{b-a} \left(\frac{b^2}{2} - \frac{a^2}{2}\right) \\
+&= \frac{1}{b-a} \left(\frac{(0.5)^2}{2} - \frac{(-0.5)^2}{2}\right) \\
+&= \frac{1}{b-a} \left(\frac{0.25}{2} - \frac{0.25}{2}\right) \\
+&= \frac{1}{b-a} \left(0\right) \\
+&= 0 \\
+\end{align*}
+
+Therefore, as $n$ becomes large, the mean absolute error converges to the expected value of the absolute value of the rounding error $X_i$, which is $0$. This means that the mean absolute error approaches $0$ as the number of measurements increases.
+%
+
 \item For large $n$, find the distribution of the MAE using the central limit theorem. 
 			\hfill [2 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The mean absolute error (MAE) is given by:
+\begin{align*}
+MAE &= \frac{1}{n} \sum_{i=1}^n |X_i|
+\end{align*}
+
+The central limit theorem is says that for large number of independent measurements, the distribution of the sample mean (or also the MAE) approaches a normal distribution. Specifically, it states that:
+
+\begin{align*}
+\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} &\xrightarrow{D} N(0, 1)
+\end{align*}
+
+Where $\bar{X} = \frac{1}{n} \sum_{i=1}^n |X_i|$ is population mean, $\mu = \Em[|X_i|]$ is the sample mean, and $\sigma = \sqrt{\var[X_i]}$ is the standard deviation of the sample.
+
+We already know that $\mu = 0$ and $\sigma = \sqrt{\frac{1}{12}}$. Therefore, we can the distribution of the MAE as:
+
+\begin{align*}
+\frac{MAE - 0}{\sqrt{\frac{1}{12}}/\sqrt{n}} &\xrightarrow{D} N(0, 1) \\
+\frac{MAE}{\sqrt{\frac{1}{12}}/\sqrt{n}} &\xrightarrow{D} N(0, 1) \\
+MAE &\xrightarrow{D} N\left(0, \frac{1}{12n}\right) \\
+\end{align*}
+%
+
 \item 
 {\bf (*STAT7003)} Repeat (d) with MAE replaced by the mean square error (MSE) $\frac{1}{n} \sum_{i=1}^n X_i^2$. 
 			\\\phantom{1}\hfill [5 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The expected value of the square of a uniform distribution $X \sim U(a, b)$ is given by:
+
+\begin{align*}
+E[X^2] &= \frac{1}{b-a} \int_a^b x^2 dx \\
+&= \frac{1}{b-a} \left(\frac{b^3}{3} - \frac{a^3}{3}\right) \\
+&= \frac{1}{b-a} \left(\frac{(0.5)^3}{3} - \frac{(-0.5)^3}{3}\right) \\
+&= \frac{1}{12} \\
+\end{align*}
+
+The variance of the square of a uniform distribution $X \sim U(a, b)$ is given by:
+
+\begin{align*}
+Var[X^2] &= E[X^4] - (E[X^2])^2 \\
+&= \frac{1}{b-a} \int_a^b x^4 dx - \left(\frac{1}{12}\right)^2 \\
+&= \left(\frac{b^5}{5} - \frac{a^5}{5}\right) - \frac{1}{144} \\
+&= \left(\frac{(0.5)^5}{5} - \frac{(-0.5)^5}{5}\right) - \frac{1}{144} \\
+&= \frac{1}{180}
+\end{align*}
+
+Therefore, by the central limit theorem, we have:
+
+\begin{align*}
+\frac{MSE - \mu}{\sigma/\sqrt{n}} &\xrightarrow{D} N(0, 1) \\
+\frac{MSE - \frac{1}{12}}{\sqrt{\frac{1}{180}}/\sqrt{n}} &\xrightarrow{D} N(0, 1) \\
+MSE &\xrightarrow{D} N\left(\frac{1}{12}, \frac{1}{180n}\right)
+\end{align*}
+
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%
