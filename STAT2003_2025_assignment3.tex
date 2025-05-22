@@ -155,9 +155,79 @@ Let $A$ and $B$ denote the number of minutes taken by machines A and B, respecti
 \item Find the joint probability mass function (PMF) of $X$ and $Y$. 
 			\hfill [8 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The probability disibutions of $A$ and $B$ are given by:
+\begin{align*}
+P(A=a) &= (1-p)^{a-1}p \quad \text{for } k=1,2,\ldots \\
+P(B=b) &= (1-p)^{b-1}p \quad \text{for } k=1,2,\ldots
+\end{align*}
+
+We break the problem into two cases - when $a\geq b$ and when $a<b$.
+
+\subsubsection*{Case 1: $a\geq b$, $y \geq 0$}
+
+In this case, we have $X = b$ and $Y = a-b$. The joint PMF is given by:
+\begin{align*}
+P(X=x, Y=y) &= P(A = x + y, B=x) \\
+&= P(A = x+y) \cdot P(B=x) \\
+&= (1-p)^{(x+y)-1}p \cdot (1-p)^{x-1}p \\
+&= \boxed{p^2(1-p)^{2x+y-2}} \\
+\end{align*}
+
+\subsubsection*{Case 2: $a<b$, $y < 0$}
+In this case, we have $X = a$ and $Y = a-b$. The joint PMF is given by:
+\begin{align*}
+P(X=x, Y=y) &= P(A = x, B=x-y) \\
+&= P(A = x) \cdot P(B=x-y) \\
+&= (1-p)^{x-1}p \cdot (1-p)^{(x-y)-1}p \\
+&= \boxed{p^2(1-p)^{2x-y-2}} \\
+\end{align*}
+
+Therefore, the joint PMF of $X$ and $Y$ is given by:
+\begin{align*}
+P(X=x, Y=y) &= \begin{cases}
+p^2(1-p)^{2x+y-2} & \text{if } a\geq b, y \geq 0 \\
+p^2(1-p)^{2x-y-2} & \text{if } a<b, y < 0
+\end{cases}
+\end{align*}
+
+
 \item Are $X$ and $Y$ independent? Justify your answer.  
 			\hfill [2 marks]
 %
+\\
+\textbf{Answer:}
+\\
+To check if $X$ and $Y$ are independent, we need to see if the joint PMF can be expressed as the product of the marginal PMFs.
+The marginal PMF of $X$ can be found by summing the joint PMF over all possible values of $Y$:
+
+\begin{align*}
+P(X=x) &= \sum_{y=-\infty}^{\infty} P(X=x, Y=y) \\
+&= \sum_{y=0}^{\infty} p^2(1-p)^{2x+y-2} + \sum_{y=-\infty}^{-1} p^2(1-p)^{2x-y-2} \\
+&= p^2(1-p)^{2x-2} \sum_{y=0}^{\infty} (1-p)^{y} + p^2(1-p)^{2x-2} \sum_{y=-\infty}^{-1} (1-p)^{-y} \\
+\end{align*}
+
+The left sum is a geometric series with the first term $1$ and common ratio $(1-p)$, which converges:
+
+\begin{align*}
+\sum_{y=0}^{\infty} (1-p)^{y} &= \frac{1}{p} \\
+\end{align*}
+
+The right sum can be rexpressed as:
+
+\begin{align*}
+\sum_{y=-\infty}^{-1} (1-p)^{-y} &= \sum_{k=1}^{\infty} (1-p)^{k} \\
+&= \frac{(1-p)}{p} \\
+\end{align*}
+
+Subsituting these results back into the marginal PMF of $X$, we have:
+\begin{align*}
+P(X=x) &= p^2(1-p)^{2x-2} \left(\frac{1}{p} + \frac{1-p}{p}\right) \\
+&= p(1-p)^{2x-2} \left( 2-p \right) \\
+\end{align*}
+
 \item Determine the joint PMF of $A$ and $A+B$. 
 			\hfill [4 marks]
 %
