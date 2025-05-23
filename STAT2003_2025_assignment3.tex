@@ -510,12 +510,135 @@ If the store has no rackets in stock at the end of the day, the manager places a
 \item Give the one-step transition matrix for the number of rackets in stock at the start of each day, given the stock level at the start of the previous day. Draw the corresponding transition graph. 
 			\\\phantom{1}\hfill [6 marks]
 %
+\\
+\textbf{Answer:}
+\\
+\subsubsection*{Case 1: previous day stock = 0}
+
+It cannot be possible to start the day with 0 rackets in stock, because the manager will restock the rackets before the store opens. Therefore, the probability of starting the day with 0 rackets in stock is 0. That is:
+
+\begin{align*}
+P(0, 0) &= 0 \\
+P(0, 1) &= 0 \\
+P(0, 2) &= 0 \\
+P(0, 3) &= 0 \\
+P(0, 4) &= 1 \\
+\end{align*}
+
+\subsubsection*{Case 2: previous day stock = 1}
+
+The probability that 1 racket is sold is 40\%, and the probability that 2 rackets are sold is 20\%, therefore the probability of starting the next day with 4 rackets in stock is 60\%  
+
+The probability that 0 rackets are sold is 40\%, therefore the probability of starting the nexd day with 1 racket in stock is 40\%.
+
+\begin{align*}
+P(1, 0) &= 0 \\
+P(1, 1) &= 0.4 \\
+P(1, 2) &= 0 \\
+P(1, 3) &= 0 \\
+P(1, 4) &= 0.6 \\
+\end{align*}
+
+\subsubsection*{Case 3: previous day stock = 2}
+
+The probability that 1 racket is sold is 40\%, therefore the probability of starting the next day with 1 racket in stock is 40\%. The probability that 2 rackets are sold is 20\%, therefore the probability of starting the next day with 4 rackets in stock is 20\%. The probability that 0 rackets are sold is 40\%, therefore the probability of starting the next day with 2 rackets in stock is 40\%.
+
+\begin{align*}
+P(2, 0) &= 0 \\
+P(2, 1) &= 0.4 \\
+P(2, 2) &= 0.4 \\
+P(2, 3) &= 0 \\
+P(2, 4) &= 0.2 \\
+\end{align*}
+
+\subsubsection*{Case 4: previous day stock = 3}
+
+The probability that 1 racket is sold is 40\%, therefore the probability of starting the next day with 2 rackets in stock is 40\%. 
+
+The probability that 2 rackets are sold is 20\%, therefore the probability of starting the next day with 1 racket in stock is 20\%. 
+
+The probability that 0 rackets are sold is 40\%, therefore the probability of starting the next day with 3 rackets in stock is 40\%.
+
+\begin{align*}
+P(3, 0) &= 0 \\
+P(3, 1) &= 0.2 \\
+P(3, 2) &= 0.4 \\
+P(3, 3) &= 0.4 \\
+P(3, 4) &= 0 \\
+\end{align*}
+
+\subsubsection*{Case 5: previous day stock = 4}
+The probability that 1 racket is sold is 40\%, therefore the probability of starting the next day with 3 rackets in stock is 40\%.
+
+The probability that 2 rackets are sold is 20\%, therefore the probability of starting the next day with 2 rackets in stock is 20\%.
+
+The probability that 0 rackets are sold is 40\%, therefore the probability of starting the next day with 4 rackets in stock is 40\%.
+
+\begin{align*}
+P(4, 0) &= 0 \\
+P(4, 1) &= 0 \\
+P(4, 2) &= 0.2 \\
+P(4, 3) &= 0.4 \\
+P(4, 4) &= 0.4 \\
+\end{align*}
+
+The transition matrix is given by:
+\begin{align*}
+P &= \begin{bmatrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & 0.4 & 0 & 0 & 0.6 \\
+0 & 0.4 & 0.4 & 0 & 0.2 \\
+0 & 0.2 & 0.4 & 0.4 & 0 \\
+0 & 0 & 0.2 & 0.4 & 0.4 \\
+\end{bmatrix}
+\end{align*}
+%
+
 \item Find the limiting distribution for the number of rackets in stock when the shop opens, using your transition matrix in (a). 
 			\hfill [5 marks]
 %
+\\
+\textbf{Answer:}
+\\
+To find the limiting distribution, we need to solve the equation:
+
+\begin{align*}
+\pi P &= \pi \\
+\end{align*}
+
+Where $\pi$ is the limiting distribution vector.
+
+The limiting distribution vector $\pi$ is given by:
+\begin{align*}
+\pi &= \begin{bmatrix}
+\pi_0 & \pi_1 & \pi_2 & \pi_3 & \pi_4 \\
+\end{bmatrix}
+\end{align*}
+
+The eigenvector of the transition matrix $P$ associated with the eigenvalues 1 is given by:
+\begin{align*}
+\pi &= 
+\begin{bmatrix}
+1 & 1 & 1 & 1 & 1 \\
+\end{bmatrix}
+\end{align*}
+
 \item Determine the expected long-run average number of restocking orders placed per day. 
 			\\\phantom{1}\hfill [2 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The expected long-run average number of restocking orders placed per day is given by the sum of the probabilities of being in each state multiplied by the number of restocking orders placed in that state:
+\begin{align*}
+E[R] &= \pi_0 \cdot 0 + \pi_1 \cdot 1 + \pi_2 \cdot 1 + \pi_3 \cdot 1 + \pi_4 \cdot 0 \\
+&= \pi_1 + \pi_2 + \pi_3 \\
+&= \frac{1}{5} + \frac{1}{5} + \frac{1}{5} \\
+&= \frac{3}{5} \\
+&= 0.6 \\
+\end{align*}
+
+
 \item If a customer arrives and no rackets are in stock, the sale is lost. Calculate the expected number of lost sales per day in the long run. 
 			\hfill [2 marks]
 %
