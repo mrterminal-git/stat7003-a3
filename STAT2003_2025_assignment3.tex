@@ -954,9 +954,46 @@ The system is considered operational if both the power controller and the centra
 \item Give the structure function for this system.
 			\hfill [2 marks] 
 %
+\\
+\textbf{Answer:}
+\\
+The structure function for the system can be expressed as follows:
+\begin{align*}
+R_{system} = (1 - (1 - x_{s1})(1 - x_{s2})) \cdot (1 - (1 - x_{v1})(1 - x_{v2})) \cdot (x_{p} \cdot x_{c})
+\end{align*}
+
+Where $x_{s1}$ and $x_{s2}$ are the states of Sensor A and Sensor B, respectively, $x_{v1}$ and $x_{v2}$ are the states of Valve A and Valve B, respectively, $x_{p}$ is the state of the Power Controller, and $x_{c}$ is the state of the Central Decision Unit.
+
 \item Assume all six components fail independently and have exponentially distributed lifetimes with mean $\lambda$ years. What is the probability that the system is working at some time $t>0$? 
 			\\\phantom{1}\hfill [4 marks] 
 %
+\\
+\textbf{Answer:}
+\\
+The probability that the system is working at some time $t > 0$ is given by the expression:
+
+\begin{align*}
+\Pm(\text{system working at time } t) &= R_{system}(t) \\
+\end{align*}
+
+Since the components fail independently and have exponentially distributed lifetimes with mean $\lambda$ years, the reliability function for each component is given by:
+
+\begin{align*}
+R_{component}(t) &= e^{-\frac{t}{\lambda}} \\
+\end{align*}
+
+The reliability function for the system can be expressed as:
+\begin{align*}
+R_{system}(t) &= (1 - (1 - R_{s1}(t))(1 - R_{s2}(t))) \cdot (1 - (1 - R_{v1}(t))(1 - R_{v2}(t))) \cdot (R_{p}(t) \cdot R_{c}(t)) \\
+&= (1 - (1 - e^{-\frac{t}{\lambda}})(1 - e^{-\frac{t}{\lambda}})) \cdot (1 - (1 - e^{-\frac{t}{\lambda}})(1 - e^{-\frac{t}{\lambda}})) \cdot (e^{-\frac{t}{\lambda}} \cdot e^{-\frac{t}{\lambda}}) \\
+&=  e^{-2t/\lambda} \left(2e^{-t/\lambda} - e^{-2t/\lambda}\right)^2
+\end{align*}
+
+Therefore, the probability that the system is working at some time $t > 0$ is given by:
+\begin{align*}
+\Pm(\text{system working at time } t) &= e^{-2t/\lambda} \left(2e^{-t/\lambda} - e^{-2t/\lambda}\right)^2 \\
+\end{align*}
+
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
