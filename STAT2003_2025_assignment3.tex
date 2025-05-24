@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 \input{preamble}
 
 \begin{document}
@@ -592,6 +594,49 @@ P &= \begin{bmatrix}
 0 & 0 & 0.2 & 0.4 & 0.4 \\
 \end{bmatrix}
 \end{align*}
+
+Here is the transition graph:
+
+\begin{center}
+\begin{tikzpicture}[
+    ->, 
+    >=Stealth, 
+    node distance=2.8cm, 
+    every state/.style={circle, draw, minimum size=1cm},
+    thick
+]
+
+% Nodes
+\node[circle, draw, minimum size=1cm] (S0) {0};
+\node[circle, draw, minimum size=1cm, right of=S0] (S1) {1};
+\node[circle, draw, minimum size=1cm, right of=S1] (S2) {2};
+\node[circle, draw, minimum size=1cm, right of=S2] (S3) {3};
+\node[circle, draw, minimum size=1cm, right of=S3] (S4) {4};
+
+% Transitions from S0
+\draw (S0) edge[bend left=40] node[above] {1.0} (S4);
+
+% Transitions from S1
+\draw (S1) edge[loop below] node {0.4} (S1);
+\draw (S1) edge[bend left=30] node[above] {0.6} (S4);
+
+% Transitions from S2
+\draw (S2) edge[bend left=20] node[below] {0.4} (S1);
+\draw (S2) edge[loop below] node {0.4} (S2);
+\draw (S2) edge[bend left=20] node[above] {0.2} (S4);
+
+% Transitions from S3
+\draw (S3) edge[bend left=60] node[below] {0.2} (S1);
+\draw (S3) edge[bend left=20] node[below] {0.4} (S2);
+\draw (S3) edge[loop below] node {0.4} (S3);
+
+% Transitions from S4
+\draw (S4) edge[bend left=60] node[below] {0.2} (S2);
+\draw (S4) edge[bend left=20] node[below] {0.4} (S3);
+\draw (S4) edge[loop below] node {0.4} (S4);
+
+\end{tikzpicture}
+\end{center}
 %
 
 \item Find the limiting distribution for the number of rackets in stock when the shop opens, using your transition matrix in (a). 
@@ -608,6 +653,12 @@ To find the limiting distribution, we need to solve the equation:
 
 Where $\pi$ is the limiting distribution vector.
 
+With the constraint that the sum of the probabilities in $\pi$ equals 1:
+\begin{align*}
+\sum_{i=0}^{4} \pi_i &= 1 \\
+\end{align*}
+
+
 The limiting distribution vector $\pi$ is given by:
 \begin{align*}
 \pi &= \begin{bmatrix}
@@ -615,11 +666,29 @@ The limiting distribution vector $\pi$ is given by:
 \end{bmatrix}
 \end{align*}
 
-The eigenvector of the transition matrix $P$ associated with the eigenvalues 1 is given by:
+We solve the following system of equation using Python numpy:
+\begin{align*}
+	\pi(P - I) &= 0 \\
+	\sum_{i=0}^{4} \pi_i &= 1 \\
+\end{align*}
+
+Wolfram Alpha was used to solve the system of equations, using the following code:
+
+\begin{verbatim}
+	solve {
+p1=0.4p1+0.4p2+0.2p3,
+p2=0.4p2+0.4p3+0.2p4,
+p3=0.4p3+0.4p4,
+p4=0.6p1+0.2p2+0.4p4,
+p1+p2+p3+p4=1
+} for p1,p2,p3,p4
+\end{verbatim}
+
+The solution gives us the limiting distribution: 
 \begin{align*}
 \pi &= 
 \begin{bmatrix}
-1 & 1 & 1 & 1 & 1 \\
+0 & \frac{10}{43} & \frac{21}{86} & \frac{9}{43} & \frac{27}{86} \\
 \end{bmatrix}
 \end{align*}
 
@@ -629,26 +698,178 @@ The eigenvector of the transition matrix $P$ associated with the eigenvalues 1 i
 \\
 \textbf{Answer:}
 \\
-The expected long-run average number of restocking orders placed per day is given by the sum of the probabilities of being in each state multiplied by the number of restocking orders placed in that state:
-\begin{align*}
-E[R] &= \pi_0 \cdot 0 + \pi_1 \cdot 1 + \pi_2 \cdot 1 + \pi_3 \cdot 1 + \pi_4 \cdot 0 \\
-&= \pi_1 + \pi_2 + \pi_3 \\
-&= \frac{1}{5} + \frac{1}{5} + \frac{1}{5} \\
-&= \frac{3}{5} \\
-&= 0.6 \\
-\end{align*}
+The shop can only restock in a day when it starts with 1 or 2 rackets in stock. The probability of restocking when the day starts with 1 racker in stock is 0.6, and the probability of restocking when the day start with 2 rackets in stock is 0.2. Therefore, the expected long-run average number of restocking order placed per day is given by:
 
+\begin{align*}
+E[\text{restocking orders}] &= \pi_1 \cdot 0.6 + \pi_2 \cdot 0.2 \\
+&= \frac{10}{43} \cdot 0.6 + \frac{21}{86} \cdot 0.2 \\
+&\approx 0.1884 \\
+\end{align*}
+%
 
 \item If a customer arrives and no rackets are in stock, the sale is lost. Calculate the expected number of lost sales per day in the long run. 
 			\hfill [2 marks]
 %
+\\
+\textbf{Answer:}
+\\
+The only way that a sale can be lost is if the day starts with 1 racket in stock, and someone wants to buy 2 rackets (0.2 probability). Therefore, the expected number of lost sales per day is given by:
+
+\begin{align*}
+E[\text{lost sales}] &= \pi_1 \cdot 0.2 \\
+&= \frac{10}{43} \cdot 0.2 \\
+&\approx 0.04651 \\
+\end{align*}
+
 \item Each successful sale generates a profit of $P$, and the delivery charge remains as $C$ regardless of the quantity ordered. Use {\sf Python} to simulate the sales and inventory of this store. Implement two restocking strategies: (i) restock when there are no rackets left, and (ii) restock if there are fewer than two rackets at the end of the day. 
 Start with an initial stock of four rackets. Set $P=10$ and $C=15$. Simulate $1000$ days and report the average number of restocking orders, the average number of sales lost, and the average profit from sales. Compare the two restocking strategies based on the simulation results.   
 			\hfill [15 marks]
 %
+\\
+\textbf{Answer:}
+\\
+
+The following Python code simulates the sales and inventory of the store for both restocking strategies:
+\begin{verbatim}
+	import numpy as np
+
+# Simulation settings
+P = 10
+C = 15
+N_DAYS = 1000
+INITIAL_STOCK = 4
+
+# Demand distribution
+demand_values = [0, 1, 2]
+demand_probs = [0.4, 0.4, 0.2]
+
+# Simulation function
+def simulate(strategy):
+    stock = INITIAL_STOCK
+    restocks = 0
+    lost_sales = 0
+    total_sales = 0
+
+    for _ in range(N_DAYS):
+        demand = np.random.choice(demand_values, p=demand_probs)
+        actual_sales = min(stock, demand)
+        lost_sales += demand - actual_sales
+        total_sales += actual_sales
+        stock -= actual_sales
+
+        # Strategy i - restock if stock == 0
+        if strategy == 'strategy_1' and stock == 0:
+            stock = 4
+            restocks += 1
+
+        # Strategy ii - restock if stock < 2
+        elif strategy == 'strategy_2' and stock < 2:
+            stock = 4
+            restocks += 1
+
+    revenue = total_sales * P
+    restock_cost = restocks * C
+    profit = revenue - restock_cost
+
+    return {
+        'avg_restocks': restocks / N_DAYS,
+        'avg_lost_sales': lost_sales / N_DAYS,
+        'avg_profit': profit / N_DAYS
+    }
+
+# --- MAIN EXECUTION ---
+results_strategy_1 = simulate('strategy_1')
+results_strategy_2 = simulate('strategy_2')
+
+results_strategy_1, results_strategy_2
+\end{verbatim}
+
+The simulation resutls for the two strategies are as follows:
+
+\subsubsection*{Strategy (i): Restock when there are no rackets left}
+\begin{verbatim}
+{'avg_restocks': 0.192,
+  'avg_lost_sales': np.float64(0.041),
+  'avg_profit': np.float64(4.83)}
+\end{verbatim}
+
+\subsubsection*{Strategy (ii): Restock if there are fewer than two rackets at the end of the day}
+\begin{verbatim}
+{'avg_restocks': 0.243,
+  'avg_lost_sales': np.float64(0.0),
+  'avg_profit': np.float64(4.345)}
+\end{verbatim}
+
+There is more lost sales with strategy (i) than with strategy (ii), but the average profit is higher with strategy (i) than with strategy (ii). This is because the average number of restocking orders is lower with strategy (i) than with strategy (ii).
+
 \item {\bf (*STAT7003)} To determine the most profitable strategy, derive a condition (expressed in terms of $C$ and $P$) under which the manager should switch from strategy (i) to strategy (ii).   
 			\\\phantom{1}\hfill [5 marks] 
 %
+\\
+\textbf{Answer:}
+\\
+
+Under strategy (ii), the transition matrix is given by:
+\begin{align*}
+P_{ii} &= \begin{bmatrix}
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0.4 & 0 & 0.6 \\
+0 & 0 & 0.4 & 0.4 & 0.2 \\
+0 & 0 & 0.2 & 0.4 & 0.4 \\
+\end{bmatrix}
+\end{align*}
+
+The limiting distribution vector $\pi_{ii}$ is given by:
+\begin{align*}
+\pi^{(ii)} = 
+\begin{bmatrix}
+0 & 0 & \frac{7}{22} & \frac{3}{11} & \frac{9}{22}
+\end{bmatrix}
+\end{align*}
+
+Under strategy (ii), the shop can only restock after a day when it starts with 3 rackets in stock, and sells 2 rackets (0.2 probability), or when it starts with 2 rackets in stock and sells 1 or 2 rackets (0.4 and 0.2 probabilities respectively). Therefore, the expected number of restocking orders per day is given by:
+\begin{align*}
+E[\text{restocks}_{ii}] &= \pi^{(ii)}_2 \cdot 0.6 + \pi^{(ii)}_3 \cdot 0.2 \\
+&= \frac{7}{22} \cdot 0.6 + \frac{3}{11} \cdot 0.2 \\
+&\approx 0.2455 \\
+\end{align*}
+
+We know that since the shop can never start the day with anything less than 2 rackets, the expected number of lost sales for strategy (ii) is 0:
+\begin{align*}
+E[\text{lost sales}_{ii}] &= 0 \\
+\end{align*}
+
+We know that expected demand is given by:
+\begin{align*}
+E[\text{demand}] &= \sum_{i=0}^{2} i \cdot P(\text{demand} = i) \\
+&= 0 \cdot 0.4 + 1 \cdot 0.4 + 2 \cdot 0.2 \\
+&= 0.8 \\
+\end{align*}
+
+The expected profit from strategy (i) is given by:
+\begin{align*}
+E[\text{profit}_i] &= P \cdot (E[\text{demand}] - E[\text{lost sales}_i]) - C \cdot E[\text{restocks}_i] \\
+\end{align*}
+
+and the expected profit from strategy (ii) is given by:
+\begin{align*}
+E[\text{profit}_i] &= P \cdot (E[\text{demand}] - E[\text{lost sales}_{ii}]) - C \cdot E[\text{restocks}_ii] \\
+&= P \cdot E[\text{demand}] - C \cdot E[\text{restocks}_ii]
+\end{align*}
+
+Therefore, the condition under which the manager should switch from strategy (i) to strategy (ii) is given by:
+
+\begin{align*}
+E[\text{profit}_i] &< E[\text{profit}_{ii}] \\
+P \cdot (- E[\text{lost sales}_i]) &< C \cdot (E[\text{restocks}_i] - \cdot E[\text{restocks}_{ii}]) \\
+\frac{P}{C} &< \frac{E[\text{restocks}_i] - \cdot E[\text{restocks}_{ii}]}{- E[\text{lost sales}_i]} \\
+&= \frac{0.1884 - 0.2455}{0 - 0.041} \\
+& \approx 1.3927
+\end{align*}
+
+Therefore, the manager should switch from strategy (i) to strategy (ii) if the ratio $\frac{P}{C} < 1.3927$.
+
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%
@@ -669,6 +890,11 @@ The system is considered operational if both the power controller and the centra
 \item Draw a block diagram that represents the system's components and their relationships. 
 			\\\phantom{1}\hfill [4 marks] 
 %
+\\
+\textbf{Answer:}
+\\
+
+
 \item Give the structure function for this system.
 			\hfill [2 marks] 
 %
