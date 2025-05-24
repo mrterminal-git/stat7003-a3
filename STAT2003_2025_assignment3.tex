@@ -1,6 +1,9 @@
 \documentclass[12pt]{article}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta, positioning}
+\usetikzlibrary{shapes, positioning}
+\usetikzlibrary{calc}
 \input{preamble}
 
 \begin{document}
@@ -894,6 +897,59 @@ The system is considered operational if both the power controller and the centra
 \textbf{Answer:}
 \\
 
+\begin{center}
+\begin{tikzpicture}[
+  component/.style={rectangle, draw, minimum width=1.5cm, minimum height=1cm, align=center},
+  conn/.style={draw, thick},
+  node distance=1cm
+]
+
+% Nodes
+\node (A) at (0,0) {A};
+
+\node[component, below=of A] (P) {Power \\ Controller};
+\node[component, below=of P] (C) {Central \\ Unit};
+
+% Sensors in parallel
+\node[component, below left=1cm and 1cm of C] (S1) {Sensor A};
+\node[component, below right=1cm and 1cm of C] (S2) {Sensor B};
+\node (Sjoin) at ($(S1)!0.5!(S2)$) {};
+\node (Sprejoin) at ($(Sjoin) + (0,+0.8)$) {};
+\node (Srejoin) at ($(Sjoin) + (0,-1)$) {};
+
+% Valves in parallel
+\node[component, below=2cm of S1] (V1) {Valve A};
+\node[component, below=2cm of S2] (V2) {Valve B};
+\node (Vjoin) at ($(V1)!0.5!(V2)$) {};
+\node (Vprejoin) at ($(Vjoin) + (0,+0.8)$) {};
+\node (Vrejoin) at ($(Vjoin) + (0,-1)$) {};
+
+\node (B) [below=2cm of Vjoin] {B};
+
+% Connections
+\draw[->] (A) -- (P);
+\draw[->] (P) -- (C);
+\draw[->] (C) -- (Sprejoin);
+
+% \draw[->] (Sjoin) -- (Vjoin);
+\draw[->] (Vrejoin) -| (B);
+
+% Sensor and valve branches
+\draw[->] (Sprejoin) -| (S1);
+\draw[->] (Sprejoin) -| (S2);
+
+\draw[->] (S1) |- (Srejoin);
+\draw[->] (S2) |- (Srejoin);
+
+\draw[->] (Srejoin) -| (Vprejoin);
+\draw[->] (Vprejoin) -| (V1);
+\draw[->] (Vprejoin) -| (V2);
+
+\draw[->] (V1) |- (Vrejoin);
+\draw[->] (V2) |- (Vrejoin);
+
+\end{tikzpicture}
+\end{center}
 
 \item Give the structure function for this system.
 			\hfill [2 marks] 
