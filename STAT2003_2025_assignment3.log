@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.14)  25 MAY 2025 16:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.14)  25 MAY 2025 16:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -833,6 +833,17 @@ File: ts1txr.fd 2000/12/15 v3.1
 [5]
 
 [6]
+LaTeX Font Info:    Trying to load font information for OT1+txss on input line 378.
+ (C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ot1txss.fd
+File: ot1txss.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 378.
+LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 378.
+LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
+(Font)              scaled to size 5.69998pt on input line 378.
+
 
 [7]
 
@@ -843,7 +854,7 @@ File: ts1txr.fd 2000/12/15 v3.1
 [10]
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 563--569
+Underfull \hbox (badness 10000) in paragraph at lines 556--562
 
  []
 
@@ -854,30 +865,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 563--569
 [13]
 
 [14]
-LaTeX Font Info:    Trying to load font information for T1+txtt on input line 728.
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 721.
  (C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
 
 [15]
-LaTeX Font Info:    Trying to load font information for T1+txss on input line 775.
+LaTeX Font Info:    Trying to load font information for T1+txss on input line 768.
  (C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\t1txss.fd
 File: t1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `T1/txss/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 775.
+(Font)              scaled to size 11.39996pt on input line 768.
 
-Underfull \hbox (badness 10000) in paragraph at lines 775--782
+Underfull \hbox (badness 10000) in paragraph at lines 768--775
 
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 812.
+LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 805.
 (C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex/latex/txfonts\ts1txtt.fd
 File: ts1txtt.fd 2000/12/15 v3.1
 )
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 856--862
+Underfull \hbox (badness 10000) in paragraph at lines 849--855
 
  []
 
@@ -888,15 +899,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 856--862
 [18]
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 941--947
+Underfull \hbox (badness 10000) in paragraph at lines 934--940
 
  []
 
 
-Package pgf Warning: Returning node center instead of a point on node border. Did you specify a point identical to the center of node ``Vrejoin''? on input line 983.
+Package pgf Warning: Returning node center instead of a point on node border. Did you specify a point identical to the center of node ``Vrejoin''? on input line 976.
 
 
-Package pgf Warning: Returning node center instead of a point on node border. Did you specify a point identical to the center of node ``Srejoin''? on input line 992.
+Package pgf Warning: Returning node center instead of a point on node border. Did you specify a point identical to the center of node ``Srejoin''? on input line 985.
 
 
 
@@ -909,15 +920,15 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 24235 strings out of 473523
- 518753 string characters out of 5714146
+ 24269 strings out of 473523
+ 519356 string characters out of 5714146
  947111 words of memory out of 5000000
- 46983 multiletter control sequences out of 15000+600000
- 599392 words of font info for 107 fonts, out of 8000000 for 9000
+ 47013 multiletter control sequences out of 15000+600000
+ 601429 words of font info for 110 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,18n,107p,572b,1189s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtcxr.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtxb.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtxmi.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/rtxr.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/tcxtt.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txex.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsy.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/txsyb.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on STAT2003_2025_assignment3.pdf (21 pages, 147991 bytes).
+Output written on STAT2003_2025_assignment3.pdf (21 pages, 148815 bytes).
 PDF statistics:
  144 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

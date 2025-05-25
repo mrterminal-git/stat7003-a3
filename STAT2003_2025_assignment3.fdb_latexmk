@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748154719.91864 "c:/Users/Volter/Documents/GITHUB REPOSITORIES/stat7003-a3/STAT2003_2025_assignment3.tex" "STAT2003_2025_assignment3.pdf" "STAT2003_2025_assignment3" 1748154721.12397 0
+["pdflatex"] 1748155414.96983 "c:/Users/Volter/Documents/GITHUB REPOSITORIES/stat7003-a3/STAT2003_2025_assignment3.tex" "STAT2003_2025_assignment3.pdf" "STAT2003_2025_assignment3" 1748155416.15628 0
   "C:/Users/Volter/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1747873953 82560 ef239c2cb0a12117bb5525d1036b4375 ""
   "C:/Users/Volter/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs10.tfm" 1743742663 688 37338d6ab346c2f1466b29e195316aa4 ""
   "C:/Users/Volter/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs5.tfm" 1743742663 684 3a51bd4fd9600428d5264cf25f04bb9a ""
@@ -32,6 +32,7 @@
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txmi.tfm" 1231975374 1944 f854e259cb2839e49d4aa2949544a6e1 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txmia.tfm" 977342760 1180 72784d0ee5a983fba99a0986b31b0493 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txr.tfm" 977342760 2408 aec793a3c45e495f7ad15b227c91f508 ""
+  "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txss.tfm" 977342760 2812 58673a2de05c4f3a942b32b7ff5d1117 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txsy.tfm" 977342760 1268 1d124f224979493f8fd017a7597ea1cd ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txsya.tfm" 977342760 972 2c9ffac4bbd20f91c01aaef9bf3f8710 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/tfm/public/txfonts/txsyb.tfm" 977342760 988 098ca7e8cc5647b9ac21b82dbdce1f01 ""
@@ -57,6 +58,7 @@
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/vf/public/txfonts/tcxr.vf" 977342760 988 4f41b8c123e4537adb7f2dbb638d2981 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/vf/public/txfonts/txmi.vf" 1231975374 960 cfcc9d587b40b769f64408b3ca115941 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/vf/public/txfonts/txr.vf" 977342760 904 e582cae2d8ae3f48a0a520440ebcdb51 ""
+  "C:/Users/Volter/AppData/Local/Programs/MiKTeX/fonts/vf/public/txfonts/txss.vf" 977342760 900 d505cb2e7d86314b1a2248e147d1eddf ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty" 1734114575 7984 7dbb9280f03c0a315425f1b4f35d43ee ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty" 1734114575 1057 525c2192b5febbd8c1f662c9468335bb ""
@@ -203,6 +205,7 @@
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/omstxsy.fd" 977342760 329 6ac7e19535b9f1d64e4d8e3f77dc30a3 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/omxtxex.fd" 977342760 312 11fe1916b0a13a81a05234a6fc7f8738 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/ot1txr.fd" 977342760 1271 4e3afbd8e832f2f9c7f064894e6e68e4 ""
+  "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/ot1txss.fd" 977342760 1375 b9d8628471eb35e3cf16d9665f977016 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/t1txr.fd" 977342760 1242 cbf8a0d4f750f9833a0bfb05fb39f1cb ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/t1txss.fd" 977342760 1362 13e59690199f58f0836298f1c5f460eb ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/t1txtt.fd" 977342760 1324 7b6c95370a64cd8c7620cbefefb53dba ""
@@ -216,9 +219,9 @@
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/txfonts/utxsyc.fd" 977342760 310 4b5d6fe830337242ef847b3bff48ba21 ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/upquote/upquote.sty" 1335534756 1088 517e01cde97c1c0baf72e69d43aa5a2e ""
   "C:/Users/Volter/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "STAT2003_2025_assignment3.aux" 1748154720 48 08cef822dce0aaba6aeaf10296d4d777 "pdflatex"
-  "STAT2003_2025_assignment3.tex" 1748154719 37764 511e35d8c390e2ff6dd70e63f0e7aa20 ""
-  "c:/Users/Volter/Documents/GITHUB REPOSITORIES/stat7003-a3/STAT2003_2025_assignment3.tex" 1748154719 37764 511e35d8c390e2ff6dd70e63f0e7aa20 ""
+  "STAT2003_2025_assignment3.aux" 1748155415 48 08cef822dce0aaba6aeaf10296d4d777 "pdflatex"
+  "STAT2003_2025_assignment3.tex" 1748155414 37769 a108450b4657a3074a94b5d3a0c12cc0 ""
+  "c:/Users/Volter/Documents/GITHUB REPOSITORIES/stat7003-a3/STAT2003_2025_assignment3.tex" 1748155414 37769 a108450b4657a3074a94b5d3a0c12cc0 ""
   "preamble.tex" 1747742519 5836 21ea3506a74ed51c196996e1713e79ea ""
   (generated)
   "STAT2003_2025_assignment3.aux"

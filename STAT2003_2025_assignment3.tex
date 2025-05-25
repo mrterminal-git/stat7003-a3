@@ -165,8 +165,8 @@ Let $A$ and $B$ denote the number of minutes taken by machines A and B, respecti
 \\
 The probability disibutions of $A$ and $B$ are given by:
 \begin{align*}
-P(A=a) &= (1-p)^{a-1}p \quad \text{for } k=1,2,\ldots \\
-P(B=b) &= (1-p)^{b-1}p \quad \text{for } k=1,2,\ldots
+\Pm(A=a) &= (1-p)^{a-1}p \quad \text{for } k=1,2,\ldots \\
+\Pm(B=b) &= (1-p)^{b-1}p \quad \text{for } k=1,2,\ldots
 \end{align*}
 
 We break the problem into two cases - when $a\geq b$ and when $a<b$.
@@ -175,8 +175,8 @@ We break the problem into two cases - when $a\geq b$ and when $a<b$.
 
 In this case, we have $X = b$ and $Y = a-b$. The joint PMF is given by:
 \begin{align*}
-P(X=x, Y=y) &= P(A = x + y, B=x) \\
-&= P(A = x+y) \cdot P(B=x) \\
+\Pm(X=x, Y=y) &= \Pm(A = x + y, B=x) \\
+&= \Pm(A = x+y) \cdot \Pm(B=x) \\
 &= (1-p)^{(x+y)-1}p \cdot (1-p)^{x-1}p \\
 &= \boxed{p^2(1-p)^{2x+y-2}} \\
 \end{align*}
@@ -184,15 +184,15 @@ P(X=x, Y=y) &= P(A = x + y, B=x) \\
 \subsubsection*{Case 2: $a<b$, $y < 0$}
 In this case, we have $X = a$ and $Y = a-b$. The joint PMF is given by:
 \begin{align*}
-P(X=x, Y=y) &= P(A = x, B=x-y) \\
-&= P(A = x) \cdot P(B=x-y) \\
+\Pm(X=x, Y=y) &= \Pm(A = x, B=x-y) \\
+&= \Pm(A = x) \cdot \Pm(B=x-y) \\
 &= (1-p)^{x-1}p \cdot (1-p)^{(x-y)-1}p \\
 &= \boxed{p^2(1-p)^{2x-y-2}} \\
 \end{align*}
 
 Therefore, the joint PMF of $X$ and $Y$ is given by:
 \begin{align*}
-P(X=x, Y=y) &= \begin{cases}
+\Pm(X=x, Y=y) &= \begin{cases}
 p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
 p^2(1-p)^{2x-y-2} & \text{if } y < 0
 \end{cases}
@@ -209,7 +209,7 @@ To check if $X$ and $Y$ are independent, we need to see if the joint PMF can be 
 The marginal PMF of $X$ can be found by summing the joint PMF over all possible values of $Y$:
 
 \begin{align*}
-P(X=x) &= \sum_{y=-\infty}^{\infty} P(X=x, Y=y) \\
+\Pm(X=x) &= \sum_{y=-\infty}^{\infty} \Pm(X=x, Y=y) \\
 &= \sum_{y=0}^{\infty} p^2(1-p)^{2x+y-2} + \sum_{y=-\infty}^{-1} p^2(1-p)^{2x-y-2} \\
 &= p^2(1-p)^{2x-2} \sum_{y=0}^{\infty} (1-p)^{y} + p^2(1-p)^{2x-2} \sum_{y=-\infty}^{-1} (1-p)^{-y} \\
 \end{align*}
@@ -229,14 +229,14 @@ The right sum can be rexpressed as:
 
 Subsituting these results back into the marginal PMF of $X$, we have:
 \begin{align*}
-P(X=x) &= p^2(1-p)^{2x-2} \left(\frac{1}{p} + \frac{1-p}{p}\right) \\
+\Pm(X=x) &= p^2(1-p)^{2x-2} \left(\frac{1}{p} + \frac{1-p}{p}\right) \\
 &= p(1-p)^{2x-2} \left( 2-p \right) \\
 \end{align*}
 
 The marginal PMF of $Y$ can be found similarly by summing the join PMF over all possible values of $X$:
 
 \begin{align*}
-P(Y=y) &= \sum_{x=-\infty}^{\infty} P(X=x, Y=y) \\
+\Pm(Y=y) &= \sum_{x=-\infty}^{\infty} \Pm(X=x, Y=y) \\
 &= \begin{cases}
 \sum_{x=1}^{\infty} p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
 \sum_{x=1}^{\infty} p^2(1-p)^{2x-y-2} & \text{if } y < 0
@@ -255,7 +255,7 @@ For the sum term, let $k=x-1$ The sum term is a geometric series with the first 
 
 Substituting this result back into the marginal PMF of $Y$, we have:
 \begin{align*}
-P(Y=y) &= \begin{cases}
+\Pm(Y=y) &= \begin{cases}
 p(1-p)^{y} \left(\frac{1}{p(2-p)}\right) & \text{if } y \geq 0 \\
 p(1-p)^{-y} \left(\frac{1}{p(2-p)}\right) & \text{if } y < 0
 \end{cases} \\
@@ -268,7 +268,7 @@ p(1-p)^{-y} \left(\frac{1}{p(2-p)}\right) & \text{if } y < 0
 Now, we can check if the joint PMF can be expressed as the product of the marginal PMFs:
 
 \begin{align*}
-P(X=x, Y=y) &= \begin{cases}
+\Pm(X=x, Y=y) &= \begin{cases}
 \frac{p(1-p)^{y}}{2-p} p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y \geq 0 \\
 \frac{p(1-p)^{-y}}{2-p} p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y < 0
 \end{cases} \\
@@ -290,9 +290,9 @@ We can see that the joint PMF can be expressed as the product of the marginal PM
 Let $M = A + B$. The joint PMF of $A$ and $M$ can be found by the following:
 
 \begin{align*}
-P(A=a, M=m) &= P(A=a, A+B=m) \\
-&= P(A=a, B=m-a) \\
-&= P(A=a) \cdot P(B=m-a) \\
+\Pm(A=a, M=m) &= \Pm(A=a, A+B=m) \\
+&= \Pm(A=a, B=m-a) \\
+&= \Pm(A=a) \cdot \Pm(B=m-a) \\
 &= (1-p)^{a-1}p \cdot (1-p)^{(m-a)-1}p \\
 &= \begin{cases}
 p^2(1-p)^{m-2} \quad \text{for } a=1,2,\ldots,\ m=2,3,\ldots,\ 1 < a < m \\
@@ -310,7 +310,7 @@ p^2(1-p)^{m-2} \quad \text{for } a=1,2,\ldots,\ m=2,3,\ldots,\ 1 < a < m \\
 Let $Z = \frac{A}{M}$, where $M = A + B$. The PMF of $Z$ can be found by the following:
 
 \begin{align*}
-  P(Z=z) &= P\left(\frac{A}{M} = z\right) \\
+  \Pm(Z=z) &= P\left(\frac{A}{M} = z\right) \\
   &= P\left(A = zM\right) \\
   &= \sum_{m=2}^{\infty} \Pm(Z=z | M=m) \cdot \Pm(M=m) \\
 \end{align*}
@@ -325,21 +325,21 @@ The conditional PMF $\Pm(Z=z | M=m)$ can be expressed as:
 
 The marginal PMF $\Pm(M=m)$ can be expressed as:
 \begin{align*}
-  \Pm(M=m) &= \sum_{a=1}^{m-1} P(A=a, A + B = m) \\
+  \Pm(M=m) &= \sum_{a=1}^{m-1} \Pm(A=a, A + B = m) \\
   &= \sum_{a=1}^{m-1} p^2(1-p)^{m-2} \\
   &= (m-1)p^2(1-p)^{m-2}
 \end{align*}
 
 Substituting these results back into the PMF of $Z$, we have:
 \begin{align*}
-  P(Z=z) &= \sum_{m=2}^{\infty} 1 \cdot (m-1)p^2(1-p)^{m-2} \\
+  \Pm(Z=z) &= \sum_{m=2}^{\infty} 1 \cdot (m-1)p^2(1-p)^{m-2} \\
   &= p^2 \sum_{m=2}^{\infty} (m-1)(1-p)^{m-2} \\
 \end{align*}
 
 If we let $k = m-2$, then we can rewrite the sum as:
 
 \begin{align*}
-  P(Z=z) &= p^2 \sum_{k=0}^{\infty} (k+1)(1-p)^{k} \\
+  \Pm(Z=z) &= p^2 \sum_{k=0}^{\infty} (k+1)(1-p)^{k} \\
   &= p^2 \left(\frac{1}{(1-(1-p))^2}\right) \\
   &= p^2 \left(\frac{1}{p^2}\right) \\
   &= 1
@@ -350,7 +350,7 @@ Thus, the PMF of $Z$ is given by:
 The possible values of $Z$ are in the range $[0, 1]$, and the PMF is uniform over this range. Therefore, we can express the PMF of $Z$ as:
 
 \begin{align*}
-  P(Z=z) &= \begin{cases}
+  \Pm(Z=z) &= \begin{cases}
     1 & \text{if } 0 \leq z \leq 1 \\
     0 & \text{otherwise}
 \end{cases}
@@ -366,23 +366,16 @@ Suppose the test is repeated independently $N$ times. Let $N_A$ be the number of
 \\
 \textbf{Answer:}
 \\
-The number of times machine A completes the task before machine B in $N$ trials is given by the expression:
+We are looking for $\Pm(A < B)$, which is the probability that machine A is faster than machine B in a single trial.
 
 \begin{align*}
-N_A &= \sum_{i=1}^{N} I_i \\
-I_i &= \begin{cases}
-1 & \text{if machine A is faster than machine B in trial } i \\
-0 & \text{otherwise}
-\end{cases}
+\Pm(A < B) &= \sum_{a=1}^{\infty} \Pm(A = a) \cdot \Pm(B > a) \\
+&= \sum_{a=1}^{\infty} (1-p)^{a-1}p \cdot \sum_{b=a+1}^{\infty} (1-p)^{b-1}p \\
+&= \sum_{a=1}^{\infty} (1-p)^{a-1}p (1-p)^a \\
+&= \frac{1-p}{2-p}
 \end{align*}
 
-Therefore, $N_A$ is the sum of $N$ independent Bernoulli random variables, where each $I_i$ has a success probability of $p$.
-The distribution of $N_A$ is given by the binomial distribution with parameters $N$ and $p$:
-
-\begin{align*}
-N_A \sim \mathrm{Binomial}(N, p) \\
-\end{align*}
-
+Therefore, the distribution of $N_A$ is given by a binomial distribution with parameters $N$ and $\Pm(A < B) = \frac{1-p}{2-p}$ or $N_A \sim \Bin(N, \frac{1-p}{2-p})$.
 
 \end{enumerate}
 

@@ -393,6 +393,15 @@ INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtc
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txmi.vf
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxmi.tfm
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxptmri.tfm
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\ot1txss.fd
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\ot1txss.fd
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\ot1txss.fd
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\txss.tfm
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\txss.tfm
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\txss.tfm
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\txss.vf
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxphvr.tfm
+INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxss.tfm
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\t1txtt.fd
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\t1txtt.fd
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\t1txtt.fd
@@ -406,8 +415,6 @@ INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\ts1txtt.fd
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\tex\latex\txfonts\ts1txtt.fd
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\tcxtt.tfm
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\vf\public\txfonts\t1xss.vf
-INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxphvr.tfm
-INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\tfm\public\txfonts\rtxss.tfm
 INPUT STAT2003_2025_assignment3.aux
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\euler\eusm10.pfb
 INPUT C:\Users\Volter\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\euler\eusm10.pfb
