@@ -294,7 +294,10 @@ P(A=a, M=m) &= P(A=a, A+B=m) \\
 &= P(A=a, B=m-a) \\
 &= P(A=a) \cdot P(B=m-a) \\
 &= (1-p)^{a-1}p \cdot (1-p)^{(m-a)-1}p \\
-&= p^2(1-p)^{m-2} &\text{for } a=1,2,\ldots, m=2,3,\ldots \\
+&= \begin{cases}
+p^2(1-p)^{m-2} \quad \text{for } a=1,2,\ldots,\ m=2,3,\ldots,\ 1 < a < m \\
+0 \quad \text{otherwise}
+\end{cases} \\
 \end{align*}
 %
 
@@ -304,14 +307,55 @@ P(A=a, M=m) &= P(A=a, A+B=m) \\
 \\
 \textbf{Answer:}
 \\
-The PMF of $Z$ can be found by the following:
+Let $Z = \frac{A}{M}$, where $M = A + B$. The PMF of $Z$ can be found by the following:
+
 \begin{align*}
-P(Z=z) &= P\left(\frac{A}{A+B} = z\right) \\
-&= P(A = z(A+B)) \\
-&= P(A = zM) \\
-&= P(A = zm, M=m) \\
-&= \boxed{p^2(1-p)^{m-2}} \\
+  P(Z=z) &= P\left(\frac{A}{M} = z\right) \\
+  &= P\left(A = zM\right) \\
+  &= \sum_{m=2}^{\infty} \Pm(Z=z | M=m) \cdot \Pm(M=m) \\
 \end{align*}
+
+The conditional PMF $\Pm(Z=z | M=m)$ can be expressed as:
+\begin{align*}
+  \Pm(Z=z | M=m) &= \Pm(A = a | A + B = m) \\
+  &= \frac{\Pm(A = a, A + B = m)}{\Pm(A + B = m)} \\
+  &= \frac{p^2(1-p)^{m-2}}{p^2(1-p)^{m-2}} \\
+  &= 1
+\end{align*}
+
+The marginal PMF $\Pm(M=m)$ can be expressed as:
+\begin{align*}
+  \Pm(M=m) &= \sum_{a=1}^{m-1} P(A=a, A + B = m) \\
+  &= \sum_{a=1}^{m-1} p^2(1-p)^{m-2} \\
+  &= (m-1)p^2(1-p)^{m-2}
+\end{align*}
+
+Substituting these results back into the PMF of $Z$, we have:
+\begin{align*}
+  P(Z=z) &= \sum_{m=2}^{\infty} 1 \cdot (m-1)p^2(1-p)^{m-2} \\
+  &= p^2 \sum_{m=2}^{\infty} (m-1)(1-p)^{m-2} \\
+\end{align*}
+
+If we let $k = m-2$, then we can rewrite the sum as:
+
+\begin{align*}
+  P(Z=z) &= p^2 \sum_{k=0}^{\infty} (k+1)(1-p)^{k} \\
+  &= p^2 \left(\frac{1}{(1-(1-p))^2}\right) \\
+  &= p^2 \left(\frac{1}{p^2}\right) \\
+  &= 1
+\end{align*}
+
+Thus, the PMF of $Z$ is given by:
+
+The possible values of $Z$ are in the range $[0, 1]$, and the PMF is uniform over this range. Therefore, we can express the PMF of $Z$ as:
+
+\begin{align*}
+  P(Z=z) &= \begin{cases}
+    1 & \text{if } 0 \leq z \leq 1 \\
+    0 & \text{otherwise}
+\end{cases}
+\end{align*}
+
 %
 
 
