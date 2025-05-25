@@ -238,30 +238,30 @@ The marginal PMF of $Y$ can be found similarly by summing the join PMF over all 
 \begin{align*}
 P(Y=y) &= \sum_{x=-\infty}^{\infty} P(X=x, Y=y) \\
 &= \begin{cases}
-\sum_{x=0}^{\infty} p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
-\sum_{x=0}^{\infty} p^2(1-p)^{2x-y-2} & \text{if } y < 0
+\sum_{x=1}^{\infty} p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
+\sum_{x=1}^{\infty} p^2(1-p)^{2x-y-2} & \text{if } y < 0
 \end{cases}	\\
 &= \begin{cases}
-	p^2(1-p)^{y-2} \sum_{x=0}^{\infty} (1-p)^{2x} & \text{if } y \geq 0 \\
-	p^2(1-p)^{-y-2} \sum_{x=0}^{\infty} (1-p)^{2x} & \text{if } y < 0
+	p^2(1-p)^{y} \sum_{x=1}^{\infty} (1-p)^{2x-2} & \text{if } y \geq 0 \\
+	p^2(1-p)^{-y} \sum_{x=1}^{\infty} (1-p)^{2x-2} & \text{if } y < 0
 \end{cases} \\
 \end{align*}
 
-The sum term is a geometric series with the first term $1$ and common ratio $(1-p)^2$, which converges:
+For the sum term, let $k=x-1$ The sum term is a geometric series with the first term $1$ and common ratio $(1-p)^2$, which converges:
 
 \begin{align*}
-\sum_{x=0}^{\infty} (1-p)^{2x} &= \frac{1}{p(1-p)} \\
+\sum_{k=0}^{\infty} (1-p)^{2k} &= \frac{1}{p(2-p)} \\
 \end{align*}
 
 Substituting this result back into the marginal PMF of $Y$, we have:
 \begin{align*}
 P(Y=y) &= \begin{cases}
-p(1-p)^{y-2} \left(\frac{1}{p(1-p)}\right) & \text{if } y \geq 0 \\
-p(1-p)^{-y-2} \left(\frac{1}{p(1-p)}\right) & \text{if } y < 0
+p(1-p)^{y} \left(\frac{1}{p(2-p)}\right) & \text{if } y \geq 0 \\
+p(1-p)^{-y} \left(\frac{1}{p(2-p)}\right) & \text{if } y < 0
 \end{cases} \\
 &= \begin{cases}
-(1-p)^{y-3} & \text{if } y \geq 0 \\
-(1-p)^{-y-3} & \text{if } y < 0
+\frac{p(1-p)^{y}}{2-p} & \text{if } y \geq 0 \\
+\frac{p(1-p)^{-y}}{2-p} & \text{if } y < 0
 \end{cases}
 \end{align*}
 
@@ -269,12 +269,16 @@ Now, we can check if the joint PMF can be expressed as the product of the margin
 
 \begin{align*}
 P(X=x, Y=y) &= \begin{cases}
-(1-p)^{y-3}p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y \geq 0 \\
-(1-p)^{-y-3}p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y < 0
+\frac{p(1-p)^{y}}{2-p} p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y \geq 0 \\
+\frac{p(1-p)^{-y}}{2-p} p(1-p)^{2x-2} \left( 2-p \right) & \text{if } y < 0
+\end{cases} \\
+&= \begin{cases}
+p^2(1-p)^{2x+y-2} & \text{if } y \geq 0 \\
+p^2(1-p)^{2x-y-2} & \text{if } y < 0
 \end{cases} \\
 \end{align*}
 
-By inspection, we can see that the joint PMF cannot be expressed as the product of the marginal PMFs. Therefore, $X$ and $Y$ are not independent.
+We can see that the joint PMF can be expressed as the product of the marginal PMFs, which means that $X$ and $Y$ are independent random variables. Therefore, we conclude that $X$ and $Y$ are independent.
 %
 
 \item Determine the joint PMF of $A$ and $A+B$. 
